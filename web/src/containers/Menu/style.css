@@ -1,0 +1,8 @@
+.Menu {
+    border: solid black 1px;
+    position: fixed;
+    top: 0;
+    Right: 16px;
+    width: 32px;
+    height: 32px;
+}

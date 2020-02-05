@@ -1,0 +1,22 @@
+{
+  "name": "dynamicdesksandrooms",
+  "version": "1.0.0",
+  "description": "a simple react app where you can reserve desks and rooms and leave feedback",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifjGery/dynamicDesksAndRooms.git"
+  },
+  "author": "Gergo Szatmari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ifjGery/dynamicDesksAndRooms/issues"
+  },
+  "homepage": "https://github.com/ifjGery/dynamicDesksAndRooms#readme",
+  "devDependencies": {
+    "create-react-app": "^3.3.1"
+  }
+}

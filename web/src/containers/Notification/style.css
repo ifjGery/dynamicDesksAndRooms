@@ -1,0 +1,8 @@
+.Notification {
+    border: solid black 1px;
+    position: fixed;
+    top: 0;
+    left: 16px;
+    width: 32px;
+    height: 32px;
+}

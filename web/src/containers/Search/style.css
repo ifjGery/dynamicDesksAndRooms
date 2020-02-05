@@ -1,0 +1,8 @@
+.Search {
+    border: solid black 1px;
+    position: fixed;
+    top: 0;
+    right: 64px;
+    width: 32px;
+    height: 32px;
+}
