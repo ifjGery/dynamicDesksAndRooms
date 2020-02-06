@@ -43,16 +43,16 @@ class FloorPlan extends React.Component {
 
         mc.on('pan', function(e) {
             console.log(e);
-            pan.x += e.deltaX/2;
-            pan.y += e.deltaY/2;
+            pan.x += e.deltaX - last.x;
+            pan.y += e.deltaY - last.y;
+            last.x = e.deltaX;
+            last.y = e.deltaY;
             updateTransform(zoom, pan);
-        })
-
-        mc.off('pan', function(e) {
-            console.log(e);
-            last.x = 0;
-            last.y = 0;
-        })
+            if (e.srcEvent.type === 'pointerup') {
+                last.x = 0;
+                last.y = 0;
+            }
+        });        
 
         function setZoom(z) {
             zoom = z;
