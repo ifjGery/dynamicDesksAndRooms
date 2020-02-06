@@ -1,11 +1,11 @@
-.FloorPlan {
+.FloorMap {
     position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
-.FloorPlan .wall {
+.FloorMap .wall {
     fill:#7d7d7d;
     fill-opacity:1;
     stroke:none;
@@ -17,7 +17,7 @@
     stroke-opacity:1;
 }
 
-.FloorPlan .door_or_window {
+.FloorMap .door_or_window {
     fill:#000000;
     fill-opacity:1;
     stroke:none;
@@ -29,7 +29,7 @@
     stroke-opacity:1;
 }
 
-.FloorPlan .room_or_desk {
+.FloorMap .room_or_desk {
     fill:#71ff71;
     fill-opacity:1;
     stroke:none;
@@ -39,4 +39,22 @@
     stroke-miterlimit:4;
     stroke-dasharray:none;
     stroke-opacity:1;
+}
+
+.ZoomButtons {
+    border: solid black 1px;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 32px;
+    height: 64px;
+}
+
+.ZoomButtons .button {
+    height: 32px;
+    width: 32px;
+}
+
+.ZoomButtons .button:first-child {
+    border-bottom: solid black 1px;
 }

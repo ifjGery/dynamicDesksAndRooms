@@ -3,18 +3,16 @@ import Notification from '../containers/Notification/Notification';
 import FloorSelector from '../containers/FloorSelector/FloorSelector';
 import Search from '../containers/Search/Search';
 import Menu from '../containers/Menu/Menu';
-import ZoomButtons from '../containers/ZoomButtons/ZoomButtons';
-import FloorPlan from '../containers/FloorPlan/FloorPlan';
+import FloorPlan from '../containers/FloorMap/FloorMap';
 
 function App() {
   return (
     <div className="App">
+        <FloorPlan />
         <Notification />
         <FloorSelector />
         <Search />
         <Menu />
-        <ZoomButtons />
-        <FloorPlan />
     </div>
   );
 }
