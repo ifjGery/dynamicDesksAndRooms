@@ -3,7 +3,7 @@ import style from './style.css'
 
 function FloorSelector() {
   return (
-    <div className="FloorSelector">
+    <div className="FloorSelector navIcon">
       L3
     </div>
   );

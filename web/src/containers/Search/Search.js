@@ -3,7 +3,7 @@ import style from './style.css'
 
 function Search() {
   return (
-    <div className="Search">
+    <div className="Search navIcon">
       S
     </div>
   );

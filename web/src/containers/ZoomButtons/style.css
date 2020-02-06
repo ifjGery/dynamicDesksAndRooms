@@ -1,0 +1,17 @@
+.ZoomButtons {
+    border: solid black 1px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    width: 32px;
+    height: 64px;
+}
+
+.ZoomButtons .button {
+    height: 32px;
+    width: 32px;
+}
+
+.ZoomButtons .button:first-child {
+    border-bottom: solid black 1px;
+}

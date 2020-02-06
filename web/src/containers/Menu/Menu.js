@@ -3,7 +3,7 @@ import style from './style.css'
 
 function Menu() {
   return (
-    <div className="Menu">
+    <div className="Menu navIcon">
       =
     </div>
   );

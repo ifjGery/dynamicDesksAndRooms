@@ -3,7 +3,7 @@ import style from './style.css'
 
 function Notification() {
   return (
-    <div className="Notification">
+    <div className="Notification navIcon">
       !
     </div>
   );

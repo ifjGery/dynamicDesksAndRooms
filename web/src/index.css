@@ -1,0 +1,10 @@
+.navIcon {
+    width:32px;
+    height:32px;
+    background-color:white;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
