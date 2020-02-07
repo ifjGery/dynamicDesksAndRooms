@@ -41,7 +41,11 @@
     stroke-opacity:1;
 }
 
-.ZoomButtons {
+.FloorMap .room_or_desk:hover {
+    fill: #71c6ff
+}
+
+.zoomButtons {
     border: solid black 1px;
     position: absolute;
     bottom: 16px;
@@ -50,11 +54,11 @@
     height: 64px;
 }
 
-.ZoomButtons .button {
+.zoomButtons .button {
     height: 32px;
     width: 32px;
 }
 
-.ZoomButtons .button:first-child {
+.zoomButtons .button:first-child {
     border-bottom: solid black 1px;
 }
