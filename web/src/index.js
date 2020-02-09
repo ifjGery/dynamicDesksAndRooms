@@ -1,21 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+import './index.scss';
 
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import App from './containers/App/App';
 
-import { helloSaga } from './saga';
+import { LOGIN } from './components/constants';
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-    reducer,
-    applyMiddleware(sagaMiddleware)
-)
 
-sagaMiddleware.run(helloSaga)
+const preloadedState = {
+    navigation: {
+        activeWindow: LOGIN
+    }
+}
 
-const action = type => store.dispatch({type})
+const store = createStore(reducers, preloadedState);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root')
+);

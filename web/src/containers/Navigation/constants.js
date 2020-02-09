@@ -1,0 +1,4 @@
+export const NAVIGATE_FORWARD = 'NAVIGATE_FORWARD';
+export const NAVIGATE_BACK = 'NAVIGATE_BACK';
+
+export const CHANGE_WINDOW = 'CHANGE_WINDOW';

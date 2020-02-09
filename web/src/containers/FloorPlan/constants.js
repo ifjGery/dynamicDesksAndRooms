@@ -1,0 +1,1 @@
+export const SAVE_MAP_STATE = 'SAVE_MAP_STATE';

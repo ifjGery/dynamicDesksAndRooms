@@ -1,34 +1,94 @@
 import React from 'react';
-import Redux from 'redux';
 
-import ControlButton from './ControlButton';
-import FullScreenWindow from './FullScreenWindow';
+import Window from './PopUpWindow';
+import PopUpNotification from './PopUpNotification';
 
-import FloorPlan from '../containers/FloorMap/FloorMap';
-import PopUpNotification from '../containers/PopUpNotification/PopUpNotification';
+import NotificationManager from './NotificationManager';
+import SettingsManager from './SettingsManager';
+import AdvancedSearch from './AdvancedSearch';
+import ReservationPage from './ReservationPage';
+import Feedback from './Feedback';
+import SearchList from './SearchList';
+import OwnReservations from './OwnReservations';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showFullScreen: true
-    }
+import Header from '../containers/Header/Header';
+import FloorPlan from '../containers/FloorPlan/FloorPlan';
+import Login from '../containers/User/Login';
+
+import {
+  NOTIFICATION_MANAGER,
+  SETTINGS_MANAGER,
+  ADVANCED_SEARCH,
+  RESERVATION_PAGE,
+  SEARCH_LIST,
+  OWN_RESERVATIONS,
+  LOGIN,
+  RATE
+} from './constants';
+
+import L1 from '../assets/floor/L1';
+
+function App({activePage, activeWindow}) {
+  let content;
+  switch(activePage) {
+    case NOTIFICATION_MANAGER:
+      content = <NotificationManager />;
+      break;
+    case SETTINGS_MANAGER:
+      content = <SettingsManager />;
+      break;
+    case ADVANCED_SEARCH:
+      content = <AdvancedSearch />;
+      break;
+    case RESERVATION_PAGE:
+      content = <ReservationPage />;
+      break;
+    case SEARCH_LIST:
+      content = <SearchList />;
+      break;
+    case OWN_RESERVATIONS:
+      content = <OwnReservations />;
+      break;
+    default:
+      content = (
+        <FloorPlan>
+          <L1 />
+        </FloorPlan>
+      );
   }
 
-  render() {
-    const closeAction = { type: 'CLOSE_WINDOW' };
-    return (
-      <div className="App">
-        {this.state.showFullScreen && <FullScreenWindow onClick={() => Redux.disp} />}
-        <FloorPlan />
-        <ControlButton className="FloorSelector fixed" content="L1" onClick={() => console.log("FloorSelector")} />
-        <ControlButton className="Notification fixed" content="!" onClick={() => console.log("Notification")} />
-        <ControlButton className="Search fixed" content="S" onClick={() => console.log("Search")} />
-        <ControlButton className="Menu fixed" content="=" onClick={() => console.log("Menu")} />
-        <PopUpNotification />
+  let windowContent;
+  switch(activeWindow) {
+    case LOGIN:
+      windowContent = (
+        <Window>
+          <Login />
+        </Window>
+      );
+      break;
+    case RATE:
+      windowContent = (
+        <Window isCloseable>
+          <Feedback />
+        </Window>
+      );
+      break;
+    default:
+      windowContent = "";     
+  }
+
+  return (
+    <div className="App">
+      <div className="fixed">
+        <Header />
+        <div className="content">
+          {content}
+        </div>
       </div>
-    )
-  }
+      <PopUpNotification text="your room is ready" />
+      {windowContent}
+    </div>
+  )
 }
 
 export default App;

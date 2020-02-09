@@ -1,0 +1,14 @@
+export const NOTIFICATION_MANAGER = 'NOTIFICATION_MANAGER';
+export const SETTINGS_MANAGER = 'SETTINGS_MANAGER';
+export const ADVANCED_SEARCH = 'ADVANCED_SEARCH';
+export const RESERVATION_PAGE = 'RESERVATION_PAGE';
+export const SEARCH_LIST = 'SEARCH_LIST';
+export const OWN_RESERVATIONS = 'OWN_RESERVATIONS';
+
+export const LOGIN = 'LOGIN';
+export const RATE = 'RATE';
+
+export const NOTIFICATION = 'NOTIFICATION';
+export const FLOOR_SELECTOR = 'FLOOR_SELECTOR';
+export const QUICK_SEARCH = 'QUICK_SEARCH';
+export const MENU = 'MENU';

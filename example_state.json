@@ -1,0 +1,111 @@
+{
+    "activePage": null,
+    "activeWindow": null,
+    "map": {
+        "zoomLevel": 0,
+        "pan": {
+            "x": 100,
+            "y": 3.14
+        }
+    },
+    "level": {
+        "active": 1,
+        "levels": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+        ]
+    },
+    "user": {
+        "nick": "Geri",
+        "contact": "@Geri",
+        "leftHended": true
+    },
+    "reservable": {
+        "id_113": {
+            "id": 113,
+            "name": null,
+            "type": "desk",
+            "equipment": [
+                "lamp",
+                "powercord"
+            ],
+            "description" : "this is a lovely desk near a window with great view",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 3,
+                    "feedback": "it's okay, need a bit cleaning",
+                    "reply": "cleaned up"
+                }
+            ]
+        },
+        "id_114": {
+            "id": 114,
+            "name": "monaLisa",
+            "type": "room",
+            "seats": 5,
+            "equipment": [
+                "tv",
+                "computer",
+                "camera"
+            ],
+            "description" : "good sound insulation, great for smaller conferences",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 5,
+                    "feedback": "splendid",
+                    "reply": null
+                }
+            ]
+        }
+    },
+    "reserved": [
+        {
+            "id": 113,
+            "floor": 1,
+            "timestamp": 1581103175,
+            "from": 1581104175,
+            "to": 1581504175,
+            "contact": "@Geri"
+        }
+    ],
+    "notifications": [
+        {
+            "timestamp": 1581101175,
+            "text": "113 desk is freed, please rate it",
+            "seen": true,
+            "rateable": true
+        },
+        {
+            "timestamp": 1581102175,
+            "text": "113 desk is freed",
+            "seen": true,
+            "rateable": false
+        },
+        {
+            "timestamp": 1581103175,
+            "text": "'Mona lisa' room is reserved",
+            "seen": false,
+            "rateable": false
+        }
+    ],
+    "notificationSettings": [
+        {
+            "onId": "id_113",
+            "onFloor": 1,
+            "onFreed": false,
+            "onReserved": true,
+            "isImportant": false
+        },
+        {
+            "onId": "id_114",
+            "onFloor": 1,
+            "onFreed": true,
+            "onReserved": true,
+            "isImportant": true
+        }
+    ]
+}

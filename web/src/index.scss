@@ -1,0 +1,170 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+$gray-10 : #eee;
+$gray-20 : #ccc;
+$gray-30 : #aaa;
+$gray-40 : #888;
+$gray-50 : #666;
+$gray-60 : #444;
+$gray-70 : #222;
+
+
+$size-10 : 8px;
+$size-20 : 16px;
+$size-30 : 32px;
+$size-40 : 64px;
+$size-50 : 128px;
+
+%svg-default-style {
+    fill-opacity:1;
+    stroke:none;
+    stroke-linecap:round;
+    stroke-linejoin:miter;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+
+%float-under-element {
+    z-index: 1;
+    position: absolute;
+    top: $size-30 + $size-10;
+    left: 0;
+    width: 100%;
+}
+
+.fixed {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    .header {
+        background: transparent;
+        display: flex;
+        position: relative;
+    
+        &_button {
+            background: white;
+            width: $size-30;
+            height: $size-30;
+            margin: 0 $size-10;
+
+            &.selected {
+                background: $gray-60;
+            }
+        }
+    
+        .spacer {
+            flex-grow: 1;
+        }
+
+        .dropDown {
+            @extend %float-under-element;
+            background: $gray-40;
+        }
+
+        .floorSelector {
+            @extend %float-under-element;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            .selected {
+                background: $gray-40;
+            }
+        }
+
+        .quickSearch {
+            @extend %float-under-element;
+            display: flex;
+
+            input {
+                flex-grow: 1;
+            }
+
+            .searchBar {
+                width: 100%;
+                position: relative;
+            }
+        }
+    }
+
+    .content {
+        flex-grow: 1;
+
+        .floorPlan {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            .zoom {
+                position: absolute;
+                bottom: $size-20;
+                right: $size-20;
+    
+                button {
+                    width: $size-30;
+                    height: $size-30;
+                    margin: $size-10;
+                }
+            }
+        }
+    
+        #floorPlanSvg {
+            .wall {
+                @extend %svg-default-style;
+                fill:#7d7d7d;
+                stroke-width:0.70110118;
+            }
+            
+            .door_or_window {
+                @extend %svg-default-style;
+                fill:#000000;
+                stroke-width:1.40757048;
+            }
+            
+            .room_or_desk {
+                @extend %svg-default-style;
+                fill:#71ff71;
+                stroke-width:2.64583325;
+            }
+            
+            .room_or_desk:hover {
+                fill: #71c6ff
+            }    
+        }
+    }
+
+    
+}
+
+.popUpNotification {
+    position: fixed;
+    bottom: 0;
+    background: #bbb;
+    justify-content: space-between;
+    flex-direction: row;
+
+    button {
+        background: white;
+    }
+}
+
+.popUpWindow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #887f7f7f;
+
+    .window {
+        position: fixed;
+        background: #7f7f7f;
+        width: 90%;
+        max-width: 500px;
+    }
+}
