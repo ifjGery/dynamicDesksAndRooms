@@ -1,9 +1,12 @@
 import React, { useEffect, useLayoutEffect } from 'react';
+import { RESERVATION_PAGE } from './constants';
 import useMap from '../containers/FloorPlan/useMap';
+import useNavigation from '../containers/Navigation/useNavigation';
 import Hammer from 'hammerjs';
 
 function FloorPlan({children}) {
     const { mapState, saveMapState } = useMap();
+    const { navigateForward, changeSelected } = useNavigation();
     const ownElement = React.createRef();
 
     const updatePan = (element, pan) => element.setAttribute('transform', `translate(${pan.x} ${pan.y})`);
@@ -27,7 +30,7 @@ function FloorPlan({children}) {
         // making the desks and rooms clickable
 
         for (let one of selectables) {
-            one.addEventListener('click', (e) => console.log(e.target.id));
+            one.addEventListener('click', (e) => {changeSelected(e.target.id); navigateForward(RESERVATION_PAGE, true);});
         }
 
         // making the map dragable

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import useUser from '../containers/User/useUser';
+import useNavigation from '../containers/Navigation/useNavigation';
 
 function Login() {
     const [ nick, setNick ] = useState('');
     const [ contact, setContact ] = useState('');
-    const { user, updateUser } = useUser();
+    const { updateUser } = useUser();
+    const { changeWindow } = useNavigation();
     const submitHandler = e => {
         e.preventDefault();
         updateUser({nick, contact});
+        changeWindow(null);
     }
 
     return (

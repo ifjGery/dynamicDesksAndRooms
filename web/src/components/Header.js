@@ -18,6 +18,7 @@ import {
 
 function Header() {
     const [activeDropDown, setActiveDropDown] = useState(null);
+    const closeDropdown = () => setActiveDropDown(null);
     return (
         <div className="header">
             <span>
@@ -58,7 +59,7 @@ function Header() {
                 </button>
                 {
                     activeDropDown === QUICK_SEARCH &&
-                    <QuickSearch onClick={setActiveDropDown} />
+                    <QuickSearch onClick={closeDropdown} />
                 }
             </span>
             <span>
@@ -71,10 +72,10 @@ function Header() {
                     activeDropDown === MENU &&
                     <DropDown>
                         <ul>
-                            <li><NavigationButton nextPage={null} direction={FORWARD} isRootNavigation>floor plan</NavigationButton></li>
-                            <li><NavigationButton nextPage={NOTIFICATION_MANAGER} direction={FORWARD} isRootNavigation>manage notifications</NavigationButton></li>
-                            <li><NavigationButton nextPage={OWN_RESERVATIONS} direction={FORWARD} isRootNavigation>manage reservations</NavigationButton></li>
-                            <li><NavigationButton nextPage={SETTINGS_MANAGER} direction={FORWARD} isRootNavigation>settings</NavigationButton></li>
+                            <li><NavigationButton nextPage={null} direction={FORWARD} isRootNavigation onClick={closeDropdown}>floor plan</NavigationButton></li>
+                            <li><NavigationButton nextPage={NOTIFICATION_MANAGER} direction={FORWARD} isRootNavigation onClick={closeDropdown}>manage notifications</NavigationButton></li>
+                            <li><NavigationButton nextPage={OWN_RESERVATIONS} direction={FORWARD} isRootNavigation onClick={closeDropdown}>manage reservations</NavigationButton></li>
+                            <li><NavigationButton nextPage={SETTINGS_MANAGER} direction={FORWARD} isRootNavigation onClick={closeDropdown}>settings</NavigationButton></li>
                             <li><button>about</button></li>
                             <li><button>logout</button></li>
                         </ul>

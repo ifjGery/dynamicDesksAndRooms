@@ -2,7 +2,8 @@
     "navigation": {
         "activePage": null,
         "activeWindow": null,
-        "pageHistory": []
+        "pageHistory": [],
+        "activeSelection": null
     },
     "map": {
         "zoomLevel": 0,

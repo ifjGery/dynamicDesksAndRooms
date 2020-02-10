@@ -15,3 +15,6 @@ export const MENU = 'MENU';
 
 export const FORWARD = 'FORWARD';
 export const BACKWARD = 'BACKWARD';
+
+export const WATCH_DISPLAY = 'WATCH_DISPLAY';
+export const RESERVE_DISPLAY = 'RESERVE_DISPLAY';

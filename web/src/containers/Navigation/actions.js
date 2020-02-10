@@ -1,4 +1,4 @@
-import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW } from './constants';
+import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW, CHANGE_SELECTION } from './constants';
 
 export const navigateForward = (nextPage, isRootNavigation) => ({
     type: NAVIGATE_FORWARD,
@@ -19,3 +19,10 @@ export const changeWindow = (newActiveWindow) => ({
         activeWindow: newActiveWindow
     }
 });
+
+export const changeSelection = (newSelected) => ({
+    type: CHANGE_SELECTION,
+    payload: {
+        activeSelection: newSelected
+    }
+})

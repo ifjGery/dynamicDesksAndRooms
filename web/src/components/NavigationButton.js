@@ -2,15 +2,15 @@ import React from 'react';
 import useNavigation from '../containers/Navigation/useNavigation';
 import { FORWARD, BACKWARD } from './constants';
 
-function NavigationButton({children, direction, nextPage, isRootNavigation}) {
+function NavigationButton({children, direction, nextPage, isRootNavigation, onClick}) {
     const {navigateForward, navigateBackward} = useNavigation();
     let navigate;
     switch(direction) {
         case FORWARD:
-            navigate = () => navigateForward(nextPage, isRootNavigation);
+            navigate = () => {onClick && onClick(); navigateForward(nextPage, isRootNavigation);}
             break;
         case BACKWARD:
-            navigate = () => navigateBackward();
+            navigate = () => {onClick && onClick(); navigateBackward();}
             break;
         default:
             return;

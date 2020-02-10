@@ -9,11 +9,13 @@ import App from './components/App';
 
 import { LOGIN } from './components/constants';
 
+import reservables from './data.json';
 
 const preloadedState = {
     navigation: {
         activeWindow: null
-    }
+    },
+    reservable: reservables.reservable
 }
 
 const store = createStore(reducers, preloadedState);

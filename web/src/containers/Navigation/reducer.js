@@ -1,4 +1,4 @@
-import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW } from './constants';
+import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW, CHANGE_SELECTION } from './constants';
 
 const initialState = {
     activePage: null,
@@ -30,6 +30,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 activeWindow: action.payload.activeWindow
+            }
+        }
+        case CHANGE_SELECTION: {
+            return {
+                ...state,
+                activeSelection: action.payload.activeSelection
             }
         }
         default:

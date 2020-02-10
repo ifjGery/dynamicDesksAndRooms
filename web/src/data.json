@@ -1,0 +1,109 @@
+{
+    "reservable": {
+        "id_rect824": {
+            "id": "rect824",
+            "name": "101",
+            "type": "desk",
+            "equipment": [
+                "deska lamp",
+                "power cord",
+                "chair"
+            ],
+            "description": "right in front of the window, great view from here",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 4,
+                    "feedback": "great view, window need clening",
+                    "reply": "cleaned"
+                },
+                {
+                    "timestamp": 1581004175,
+                    "star": 5,
+                    "feedback": "lovely",
+                    "reply": null
+                }
+            ]
+        },
+        "id_rect824-2": {
+            "id": "rect824-0",
+            "name": "102",
+            "type": "desk",
+            "equipment": [
+                "deska lamp",
+                "power cord",
+                "chair"
+            ],
+            "description": "right in front of the window, great view from here",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 3,
+                    "feedback": "too drafty, right under the AC",
+                    "reply": null
+                }
+            ]
+        },
+        "id_rect824-0": {
+            "id": "rect824",
+            "name": "103",
+            "type": "desk",
+            "equipment": [
+                "deska lamp",
+                "power cord",
+                "chair"
+            ],
+            "description": "in a peaceful corner, for the one who likes silence",
+            "feedbacks": [
+                {
+                    "timestamp": 1581105175,
+                    "star": 4,
+                    "feedback": "confy chair, but a bit dusty",
+                    "reply": null
+                }
+            ]
+        },
+        "id_rect824-3": {
+            "id": "rect824",
+            "name": "104",
+            "type": "desk",
+            "equipment": [
+                "deska lamp",
+                "power cord",
+                "chair"
+            ],
+            "description": "in case you have to work and be on a meeting at the same time",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 3,
+                    "feedback": "too noisy",
+                    "reply": null
+                }
+            ]
+        },
+        "id_rect876": {
+            "id": "rect876",
+            "name": "MonaLisa",
+            "type": "room",
+            "seats": 6,
+            "equipment": [
+                "tv",
+                "computer",
+                "camera",
+                "microphone",
+                "laserpointer",
+                "whiteboard"
+            ],
+            "description": "perfect environment for those life changeing meetings",
+            "feedbacks": [
+                {
+                    "timestamp": 1581104175,
+                    "star": 3,
+                    "feedback": "lad out there is a bit tipsy",
+                    "reply": null
+                }
+            ]
+        }
+    }
+}
