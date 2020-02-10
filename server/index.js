@@ -29,17 +29,37 @@ wss.on('connection', (ws, req) => {
                     response.value = 'OK';
                     allClient.push({
                         socket: ws,
-                        onFloor: data.floor,
-                        nick: data.nick,
-                        contact: data.contact
+                        ...data.data
                     });
+                    console.log('new user');
+                    break;
+                case 'userUpdate':
+                    response.value = 'OK';
+                    allClient = allClient.map(client => {
+                        if(ws === client.socket) {
+                            return {
+                                ...client,
+                                ...data.data
+                            }
+                        } else {
+                            return client;
+                        }
+                    });
+                    console.log('user update');
                     break;
                 case 'grab':
                     response.value = 'OK';
                     response.reservable = allData.reservable[data.id];
                     break;
+                case 'broadcast':
+                    allClient.forEach(client => {
+                        if(client.socket !== ws)
+                            client.socket.send(JSON.stringify(data.message));
+                    })
+                    console.log('broadcast');
+                    break;
                 default:
-                    response.value = 'fail';
+                    response.value = 'fail: ' + data.toString();
             }
             ws.send(JSON.stringify(response));
         } catch(e) {

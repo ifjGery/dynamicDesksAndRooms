@@ -98,14 +98,14 @@
     ],
     "notificationSettings": [
         {
-            "onId": "id_113",
+            "onId": 113,
             "onFloor": 1,
             "onFreed": false,
             "onReserved": true,
             "isImportant": false
         },
         {
-            "onId": "id_114",
+            "onId": 114,
             "onFloor": 1,
             "onFreed": true,
             "onReserved": true,

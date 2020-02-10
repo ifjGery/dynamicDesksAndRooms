@@ -9,7 +9,6 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case USER_UPDATE: {
-            console.log(action.payload);
             return {
                 ...state,
                 ...action.payload

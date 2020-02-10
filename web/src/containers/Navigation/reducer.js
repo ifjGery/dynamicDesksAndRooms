@@ -2,7 +2,8 @@ import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW, CHANGE_SELECTION } 
 
 const initialState = {
     activePage: null,
-    navigationHistory: []
+    navigationHistory: [],
+    activeSelection: null
 };
 
 export default function(state = initialState, action) {
