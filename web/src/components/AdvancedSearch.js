@@ -1,10 +1,11 @@
 import React, { useState, createRef } from 'react';
-import BackNavigation from '../containers/Navigation/BackNavigation';
+import { BACKWARD } from './constants';
+import NavigationButton from './NavigationButton';
 
 function AdvancedSearch() {
     return (
         <div className="advancedSearch">
-            <BackNavigation /><br />
+            <NavigationButton direction={BACKWARD}>Back</NavigationButton><br />
             name: <input type="input"></input><br />
             all level: <input type="checkbox"></input><br />
             number of seats: <input type="number"></input><br />

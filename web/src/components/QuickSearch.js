@@ -1,13 +1,12 @@
 import React from 'react';
-import { ADVANCED_SEARCH } from './constants';
-
-import ForwardNavigation from '../containers/Navigation/ForwardNavigation';
+import { ADVANCED_SEARCH, FORWARD } from './constants';
+import NavigationButton from './NavigationButton';
 
 function QuickSearch({onClick, onSearch}) {
     return (
         <div className="quickSearch">
             <input type="text"></input>
-            <ForwardNavigation nextPage={ADVANCED_SEARCH} onClick={onClick}>Adv</ForwardNavigation>
+            <NavigationButton nextPage={ADVANCED_SEARCH} direction={FORWARD} isRootNavigation>Adv</NavigationButton>
         </div>
     );
 }

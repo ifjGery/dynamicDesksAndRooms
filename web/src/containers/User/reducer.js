@@ -1,4 +1,4 @@
-import { USER_LOGIN } from './constants';
+import { USER_LOGIN, USER_UPDATE } from './constants';
 
 const initialState = {
     nick: '',
@@ -8,7 +8,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case USER_LOGIN: {
+        case USER_UPDATE: {
             return {
                 ...state,
                 ...action.payload

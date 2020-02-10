@@ -12,3 +12,6 @@ export const NOTIFICATION = 'NOTIFICATION';
 export const FLOOR_SELECTOR = 'FLOOR_SELECTOR';
 export const QUICK_SEARCH = 'QUICK_SEARCH';
 export const MENU = 'MENU';
+
+export const FORWARD = 'FORWARD';
+export const BACKWARD = 'BACKWARD';

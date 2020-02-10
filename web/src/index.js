@@ -5,14 +5,14 @@ import './index.scss';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
-import App from './containers/App/App';
+import App from './components/App';
 
 import { LOGIN } from './components/constants';
 
 
 const preloadedState = {
     navigation: {
-        activeWindow: LOGIN
+        activeWindow: null
     }
 }
 

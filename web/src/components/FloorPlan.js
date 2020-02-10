@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
+import useMap from '../containers/FloorPlan/useMap';
 import Hammer from 'hammerjs';
 
-function FloorPlan({children, startState = {zoom: 1, pan: {x:0, y:0}}, onSaveState}) {
-    const mapState = {...startState};
+function FloorPlan({children}) {
+    const { mapState, saveMapState } = useMap();
     const ownElement = React.createRef();
 
-    const updatePan = (element, pan) => element.setAttribute('transform', `translate(${pan.x} ${pan.y})`)
+    const updatePan = (element, pan) => element.setAttribute('transform', `translate(${pan.x} ${pan.y})`);
+
     useEffect(() => {
         // setting up constants
+        
         const ownRect = ownElement.current.getBoundingClientRect();
+        const transformLayer = document.getElementById('layer1');
         const selectables = document.getElementsByClassName('room_or_desk');
         const svg = document.getElementById('floorPlanSvg');
-        const transformLayer = document.getElementById('layer1');
 
-        // setting starting position
-        updatePan(transformLayer, startState.pan);
+        // setting initial pan
 
-        // updating size
+        updatePan(transformLayer, mapState.pan);
 
+        // setting svg size
         ownElement.current.children[0].setAttribute("width", ownRect.width);
         ownElement.current.children[0].setAttribute("height", ownRect.height);
 
@@ -46,12 +49,10 @@ function FloorPlan({children, startState = {zoom: 1, pan: {x:0, y:0}}, onSaveSta
             }
         })
 
-        /*
         return () => {
-            onSaveState(mapState);
+            saveMapState(mapState);
         };
-        */
-    })
+    }, [])
 
     return (
         <div className="floorPlan" ref={ownElement}>

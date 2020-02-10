@@ -1,4 +1,4 @@
-import { NAVIGATE_FORWARD, NAVIGATE_BACK, CHANGE_WINDOW } from './constants';
+import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW } from './constants';
 
 export const navigateForward = (nextPage, isRootNavigation) => ({
     type: NAVIGATE_FORWARD,
@@ -8,8 +8,8 @@ export const navigateForward = (nextPage, isRootNavigation) => ({
     }
 });
 
-export const navigateBack = () => ({
-    type: NAVIGATE_BACK,
+export const navigateBackward = () => ({
+    type: NAVIGATE_BACKWARD,
     payload: {}
 });
 

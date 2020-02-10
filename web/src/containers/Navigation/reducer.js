@@ -1,4 +1,4 @@
-import { NAVIGATE_FORWARD, NAVIGATE_BACK, CHANGE_WINDOW } from './constants';
+import { NAVIGATE_FORWARD, NAVIGATE_BACKWARD, CHANGE_WINDOW } from './constants';
 
 const initialState = {
     activePage: null,
@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
                 navigationHistory: newHistory
             };
         }
-        case NAVIGATE_BACK: {
+        case NAVIGATE_BACKWARD: {
             const newHistory = state.navigationHistory.slice(0,-1);
             const newActivePage = newHistory.length ? newHistory[newHistory.length -1] : null;
             return {

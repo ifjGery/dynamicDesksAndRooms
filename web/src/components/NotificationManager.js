@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import BackNavigation from '../containers/Navigation/BackNavigation';
+import {FORWARD, BACKWARD} from './constants';
+import NavigationButton from './NavigationButton';
 
 function NotificationEditor({notification}) {
     return (
@@ -46,7 +47,7 @@ function NotificationManager() {
 
     return (
         <div className="notificationManager">
-            <BackNavigation />
+            <NavigationButton direction={BACKWARD}>Back</NavigationButton>
             <Notification list={notifications} selected={selectedNotification} onSelected={setSelectedNotification} />
         </div>
     )

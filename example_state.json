@@ -1,6 +1,9 @@
 {
-    "activePage": null,
-    "activeWindow": null,
+    "navigation": {
+        "activePage": null,
+        "activeWindow": null,
+        "pageHistory": []
+    },
     "map": {
         "zoomLevel": 0,
         "pan": {

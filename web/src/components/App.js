@@ -10,10 +10,11 @@ import ReservationPage from './ReservationPage';
 import Feedback from './Feedback';
 import SearchList from './SearchList';
 import OwnReservations from './OwnReservations';
+import FloorPlan from './FloorPlan';
+import Login from './Login';
+import Header from './Header';
 
-import Header from '../containers/Header/Header';
-import FloorPlan from '../containers/FloorPlan/FloorPlan';
-import Login from '../containers/User/Login';
+import useNavigation from '../containers/Navigation/useNavigation';
 
 import {
   NOTIFICATION_MANAGER,
@@ -28,7 +29,11 @@ import {
 
 import L1 from '../assets/floor/L1';
 
-function App({activePage, activeWindow}) {
+function App() {
+  const { navigation } = useNavigation();
+  const activePage = navigation.activePage;
+  const activeWindow = navigation.activeWindow;
+  
   let content;
   switch(activePage) {
     case NOTIFICATION_MANAGER:

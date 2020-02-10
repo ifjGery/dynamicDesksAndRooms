@@ -1,5 +1,6 @@
 import React, { useState, createRef } from 'react';
-import BackNavigation from '../containers/Navigation/BackNavigation';
+import { BACKWARD } from './constants';
+import NavigationButton from './NavigationButton';
 
 function SettingsManager() {
     const [ settings, setSettings ] = useState({
@@ -12,7 +13,7 @@ function SettingsManager() {
 
     return (
         <div className="settingsManager">
-            <BackNavigation /><br />
+            <NavigationButton direction={BACKWARD}>Back</NavigationButton><br />
             <form>
                 nick: <input value={settings.nick} type="input" name="nick" onChange={onChange} /><br />
                 contact: <input value={settings.contact} type="input" name="contact" onChange={onChange} /><br />

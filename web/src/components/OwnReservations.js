@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import BackNavigation from '../containers/Navigation/BackNavigation';
+import { BACKWARD } from './constants';
+import NavigationButton from './NavigationButton';
 
 function Details({reservation, selected}) {
     const details = (
@@ -43,7 +44,7 @@ function OwnReservations() {
 
     return (
         <div className="ownReservations">
-            <BackNavigation />
+            <NavigationButton direction={BACKWARD}>Back</NavigationButton>
             <ul>
                 {reservations.map(reservation => <Reservation reservation={reservation} selected={selectedReservation} onSelected={setSelectedReservation} />)}
             </ul>

@@ -4,8 +4,7 @@ import DropDown from './DropDown';
 import FloorSelector from './FloorSelector';
 import QuickSearch from './QuickSearch';
 
-import ForwardNavigation from '../containers/Navigation/ForwardNavigation';
-
+import NavigationButton from './NavigationButton';
 import {
     NOTIFICATION_MANAGER,
     SETTINGS_MANAGER,
@@ -13,12 +12,12 @@ import {
     NOTIFICATION,
     FLOOR_SELECTOR,
     QUICK_SEARCH,
-    MENU
+    MENU,
+    FORWARD
 } from './constants';
 
 function Header() {
     const [activeDropDown, setActiveDropDown] = useState(null);
-    const closeDropdown = () => setActiveDropDown(null);
     return (
         <div className="header">
             <span>
@@ -47,7 +46,7 @@ function Header() {
                 </button>
                 {
                     activeDropDown === FLOOR_SELECTOR &&
-                    <FloorSelector onClick={closeDropdown} />
+                    <FloorSelector />
                 }
             </span>
             <span className="spacer"></span>
@@ -72,10 +71,10 @@ function Header() {
                     activeDropDown === MENU &&
                     <DropDown>
                         <ul>
-                            <li><ForwardNavigation nextPage={null} onClick={closeDropdown} isRootNavigation>floor plan</ForwardNavigation></li>
-                            <li><ForwardNavigation nextPage={NOTIFICATION_MANAGER} onClick={closeDropdown} isRootNavigation>manage notifications</ForwardNavigation></li>
-                            <li><ForwardNavigation nextPage={OWN_RESERVATIONS} onClick={closeDropdown} isRootNavigation>manage reservations</ForwardNavigation></li>
-                            <li><ForwardNavigation nextPage={SETTINGS_MANAGER} onClick={closeDropdown} isRootNavigation>settings</ForwardNavigation></li>
+                            <li><NavigationButton nextPage={null} direction={FORWARD} isRootNavigation>floor plan</NavigationButton></li>
+                            <li><NavigationButton nextPage={NOTIFICATION_MANAGER} direction={FORWARD} isRootNavigation>manage notifications</NavigationButton></li>
+                            <li><NavigationButton nextPage={OWN_RESERVATIONS} direction={FORWARD} isRootNavigation>manage reservations</NavigationButton></li>
+                            <li><NavigationButton nextPage={SETTINGS_MANAGER} direction={FORWARD} isRootNavigation>settings</NavigationButton></li>
                             <li><button>about</button></li>
                             <li><button>logout</button></li>
                         </ul>
