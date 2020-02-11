@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import useNavigation from '../containers/Navigation/useNavigation';
 
-function PopUpWindow({onClose, children, isCloseable}) {
-    const closeButton = isCloseable ? (<><button onClick={onClose}>X</button><br /></>) : "";
+function PopUpWindow({children, isCloseable}) {
+    const { changeWindow } = useNavigation();
+    const closeButton = isCloseable ? (<><button onClick={() => changeWindow(null)}>X</button><br /></>) : "";
     const ownElement = React.createRef();
     const parentElement = React.createRef();
     useEffect(() => {

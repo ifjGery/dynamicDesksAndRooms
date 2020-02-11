@@ -3,3 +3,5 @@ export const NAVIGATE_BACKWARD = 'NAVIGATE_BACKWARD';
 
 export const CHANGE_WINDOW = 'CHANGE_WINDOW';
 export const CHANGE_SELECTION = 'CHANGE_SELECTION';
+
+export const CHANGE_RATE_ID = ''

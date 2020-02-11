@@ -121,6 +121,7 @@ function ReservationPage() {
             display = <Details reservation={reservation} onChangeDisplay={setActiveDisplay} />;
     }
 
+    console.log(reservation);
     let name = reservation.name ? <>name: {reservation.name}<br /></> : "";
 
     return (

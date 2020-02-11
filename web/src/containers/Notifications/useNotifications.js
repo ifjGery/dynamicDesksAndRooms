@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 import { 
     createNotification as createNotificationAction,
     readNotification as readNotificationAction

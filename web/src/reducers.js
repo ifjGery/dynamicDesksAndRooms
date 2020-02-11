@@ -7,16 +7,17 @@ import Reservations from './containers/Reservations/reducer';
 import NotificationSettings from './containers/NotificationSettings/reducer';
 import Notifications from './containers/Notifications/reducer';
 import Search from './containers/Search/reducer';
-
-const reservables = (state = null, action) => state;
+import Feedback from './containers/Feedback/reducer';
+import FeedbackId from './containers/Feedback/rateReducer';
 
 export default combineReducers({
     navigation: Navigation, 
     map: FloorPlan, 
     user: User, 
-    reservable: reservables,
+    reservable: Feedback,
     reserved: Reservations,
     notificationSettings: NotificationSettings,
     notifications: Notifications,
-    search: Search
+    search: Search,
+    feedbackId: FeedbackId
 });

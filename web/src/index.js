@@ -28,8 +28,8 @@ const preloadedState = {
             floor: 1,
             timestamp: 10000000,
             from: ct.getTime(),
-            to: ct.getTime() + 1000 * 60,
-            contact: 'g',
+            to: ct.getTime() + 1000 * 10,
+            contact: 'bbbb',
             state: 'scheduled'
         }
     ],
@@ -81,6 +81,7 @@ setInterval(() => {
             state.notificationSettings.forEach(setting => {
                 if(setting.onId == one.id && setting.onReserved) {
                     store.dispatch(createNotification({
+                        id: reservable.id,
                         timestamp: currentTime,
                         text: `Someones reservation started for ${reservable.id}`,
                         seen: false,
@@ -93,9 +94,9 @@ setInterval(() => {
         else if(one.state === 'reserved' && currentTime > one.to) {
             store.dispatch(updateReserved({selected: index,state:'inactive'}))
             store.dispatch(updateReservableState(one.id, false));
-
             if (one.contact === state.user.contact) {
                 store.dispatch(createNotification({
+                    id: reservable.id,
                     timestamp: currentTime,
                     text: `How was your reservation for ${reservable.id} ? Please rate it`,
                     seen: false,
@@ -106,6 +107,7 @@ setInterval(() => {
                 state.notificationSettings.forEach(setting => {
                     if(setting.onId == one.id && setting.onFreed) {
                         store.dispatch(createNotification({
+                            id: reservable.id,
                             timestamp: currentTime,
                             text: `Someones reservation ended for ${reservable.id}`,
                             seen: false,
