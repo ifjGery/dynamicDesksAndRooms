@@ -133,6 +133,10 @@ $size-50 : 128px;
                 @extend %svg-default-style;
                 fill:#71ff71;
                 stroke-width:2.64583325;
+
+                &[data-reserved="true"] {
+                    fill:#ff7171;
+                }
             }
             
             .room_or_desk:hover {

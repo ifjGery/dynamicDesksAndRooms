@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { BACKWARD, RESERVATION_PAGE } from './constants';
+import NavigationButton from '../components/NavigationButton';
+import useSearch from '../containers/Search/useSearch';
+import useNavigation from '../containers/Navigation/useNavigation';
 
-function List({finded}) {
+function List({finded,onClick}) {
     return (
         <>
         {
             finded.map(find =>
                 <li>
-                    <button>
-                        {find.type} {find.id} {find.free ? "free" : "reserved"}
+                    <button onClick={() => onClick(find)}>
+                        {find}
                     </button>
                 </li>
                 )
@@ -17,26 +21,40 @@ function List({finded}) {
 }
 
 function SearchList() {
-    const [ finded, setFinded ] = useState([
-        {
-            id: "115",
-            type: "desk",
-            free: true,
-            level: 1
-        },
-        {
-            id: "116",
-            type: "room",
-            free: false,
-            level: 2
-        }
-    ]);
+    const { hits } = useSearch();
+    const results = hits();
+    const { navigateForward, changeSelected } = useNavigation();
+
+    const navigateToReservation = id => {changeSelected(id); navigateForward(RESERVATION_PAGE)}
 
     return (
         <div className="searchList">
-            <ul>
-                <List finded={finded} />
-            </ul>
+            <NavigationButton direction={BACKWARD}>Back</NavigationButton><br />
+            <div className="foundInId">
+                in ID<br />
+                <ul>
+                    <List onClick={navigateToReservation} finded={results.inId} />
+                </ul>
+            </div>
+            <div className="foundInName">
+                in Name<br />
+                <ul>
+                    <List onClick={navigateToReservation} finded={results.inName} />
+                </ul>
+            </div>
+            <div className="foundInDescription">
+                in Description<br />
+                <ul>
+                    <List onClick={navigateToReservation} finded={results.inDescription} />
+                </ul>
+            </div>
+            <div className="foundInEquipment">
+                in Equipment<br />
+                <ul>
+                    <List onClick={navigateToReservation} finded={results.inEquipment} />
+                </ul>
+            </div>
+            
         </div>
     )
 }

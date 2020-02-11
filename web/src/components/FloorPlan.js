@@ -11,12 +11,24 @@ function FloorPlan({children}) {
 
     const updatePan = (element, pan) => element.setAttribute('transform', `translate(${pan.x} ${pan.y})`);
 
+    const selectables = document.getElementsByClassName('room_or_desk');
+
+    useEffect(() => {
+        console.log('bb1');
+        console.log(selectables);
+        console.log(mapState.reserved);
+        for (let one of selectables) {
+            if (('id_' + one.id) in mapState.reserved) {
+                one.dataset.reserved = mapState.reserved['id_' + one.id];
+            }
+        }
+    });
+
     useEffect(() => {
         // setting up constants
         
         const ownRect = ownElement.current.getBoundingClientRect();
         const transformLayer = document.getElementById('layer1');
-        const selectables = document.getElementsByClassName('room_or_desk');
         const svg = document.getElementById('floorPlanSvg');
 
         // setting initial pan

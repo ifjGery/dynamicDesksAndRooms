@@ -15,7 +15,6 @@ function useReservations() {
         return state.reserved
     });
     const userReservations = user => {
-        
         return allReservations.filter(reservation => reservation.contact === user);
     }
     const createReserved = data => {

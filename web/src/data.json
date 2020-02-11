@@ -4,6 +4,7 @@
             "id": "rect824",
             "name": "101",
             "type": "desk",
+            "seat": 1,
             "equipment": [
                 "deska lamp",
                 "power cord",
@@ -29,6 +30,7 @@
             "id": "rect824-0",
             "name": "102",
             "type": "desk",
+            "seat": 1,
             "equipment": [
                 "deska lamp",
                 "power cord",
@@ -48,6 +50,7 @@
             "id": "rect824",
             "name": "103",
             "type": "desk",
+            "seat": 1,
             "equipment": [
                 "deska lamp",
                 "power cord",
@@ -67,6 +70,7 @@
             "id": "rect824",
             "name": "104",
             "type": "desk",
+            "seat": 1,
             "equipment": [
                 "deska lamp",
                 "power cord",

@@ -6,12 +6,12 @@ export default function(state = initialState, action) {
     const data = action.payload;
     switch(action.type) {
         case CREATE_RESERVED: {
-            return state.concat([{...data}]);
+            return state.concat([{...data,state: 'scheduled'}]);
         }
         case UPDATE_RESERVED: {
             let newState = [];
             state.map((reserved, index) => {
-                if (index === data.selected) {
+                if (index === Number(data.selected)) {
                     let { selected, ...coreData} = data;
                     newState = newState.concat([
                         {

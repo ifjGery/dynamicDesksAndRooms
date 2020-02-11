@@ -10,6 +10,10 @@
         "pan": {
             "x": 100,
             "y": 3.14
+        },
+        "reserved": {
+            "id_103" : true,
+            "id_101" : true
         }
     },
     "level": {
@@ -73,7 +77,8 @@
             "timestamp": 1581103175,
             "from": 1581104175,
             "to": 1581504175,
-            "contact": "@Geri"
+            "contact": "@Geri",
+            "state": true
         }
     ],
     "notifications": [
@@ -81,19 +86,22 @@
             "timestamp": 1581101175,
             "text": "113 desk is freed, please rate it",
             "seen": true,
-            "rateable": true
+            "rateable": true,
+            "isImportant": true
         },
         {
             "timestamp": 1581102175,
             "text": "113 desk is freed",
             "seen": true,
-            "rateable": false
+            "rateable": false,
+            "isImportant": false
         },
         {
             "timestamp": 1581103175,
             "text": "'Mona lisa' room is reserved",
             "seen": false,
-            "rateable": false
+            "rateable": false,
+            "isImportant": true
         }
     ],
     "notificationSettings": [
@@ -111,5 +119,13 @@
             "onReserved": true,
             "isImportant": true
         }
-    ]
+    ],
+    "search": {
+        "text": "room",
+        "type": "desk",
+        "minimumSeats": null,
+        "onLevel": 1,
+        "minimumRating": 0,
+        "isFree": true
+    }
 }

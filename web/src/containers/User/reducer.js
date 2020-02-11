@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_UPDATE } from './constants';
+import { USER_UPDATE } from './constants';
 
 const initialState = {
     nick: '',
