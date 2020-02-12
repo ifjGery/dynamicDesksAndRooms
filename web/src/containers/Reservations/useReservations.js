@@ -14,6 +14,9 @@ function useReservations() {
     const allReservations = useSelector(state => {
         return state.reserved
     });
+    const nameReservations = name => {
+        return allReservations.filter(reservation => reservation.id === name && reservation.from > new Date().getTime());
+    }
     const userReservations = user => {
         return allReservations.filter(reservation => reservation.contact === user);
     }
@@ -26,6 +29,7 @@ function useReservations() {
 
     return {
         allReservations,
+        nameReservations,
         userReservations,
         createReserved,
         updateReserved,

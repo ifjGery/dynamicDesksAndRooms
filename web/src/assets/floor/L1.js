@@ -9,7 +9,7 @@ function L1() {
             id="floorPlanSvg"
             version="1.1">
         <g
-            id="layer1">
+            id="layer1" transform="scale(3)">
             <path
             transform="translate(7.4639 9.1118)"
             id="rect824"

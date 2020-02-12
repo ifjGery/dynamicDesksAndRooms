@@ -3,7 +3,7 @@ import useNavigation from '../containers/Navigation/useNavigation';
 
 function PopUpWindow({children, isCloseable}) {
     const { changeWindow } = useNavigation();
-    const closeButton = isCloseable ? (<><button onClick={() => changeWindow(null)}>X</button><br /></>) : "";
+    const closeButton = isCloseable ? (<><button className="zeroStyleButton" onClick={() => changeWindow(null)}><span className="icon-cancel-circled"></span></button><br /></>) : "";
     const ownElement = React.createRef();
     const parentElement = React.createRef();
     useEffect(() => {

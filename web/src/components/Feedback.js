@@ -21,7 +21,7 @@ function Feedback() {
 
     return (
         <div className="feedbackContent">
-            <div>
+            <div className="stars">
                 <button onClick={() => setStars(1)}><span className={stars >= 1 ? "icon-star" : "icon-star-empty"}></span></button>
                 <button onClick={() => setStars(2)}><span className={stars >= 2 ? "icon-star" : "icon-star-empty"}></span></button>
                 <button onClick={() => setStars(3)}><span className={stars >= 3 ? "icon-star" : "icon-star-empty"}></span></button>
@@ -30,7 +30,7 @@ function Feedback() {
             </div><br />
             <b>feedback:</b><br />
             <input type="text" value={feedback} onChange={(e) => setfeedback(e.target.value)} /><br />
-            <button onClick={rate}>rate</button>
+            <button className="navButton" onClick={rate}>rate</button>
         </div>
     )
 }

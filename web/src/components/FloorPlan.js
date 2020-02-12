@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useRef, createRef } from 'react';
 import { RESERVATION_PAGE } from './constants';
 import useMap from '../containers/FloorPlan/useMap';
 import useNavigation from '../containers/Navigation/useNavigation';
@@ -7,9 +7,17 @@ import Hammer from 'hammerjs';
 function FloorPlan({children}) {
     const { mapState, saveMapState } = useMap();
     const { navigateForward, changeSelected } = useNavigation();
-    const ownElement = React.createRef();
+    const ownElement = createRef();
+    const transformLayer = useRef(null);
+    
+    const setZoom = zoom => {
+        let newZoom = zoom < 1 ? 1 : zoom;
+        console.log(newZoom);
+        mapState.zoom = newZoom;
+        updatePan(transformLayer.current, mapState);
+    }
 
-    const updatePan = (element, pan) => element.setAttribute('transform', `translate(${pan.x} ${pan.y})`);
+    const updatePan = (element, mapState) => element.setAttribute('transform', `scale(3) translate(${mapState.pan.x} ${mapState.pan.y})`);
 
     const selectables = document.getElementsByClassName('room_or_desk');
 
@@ -24,17 +32,25 @@ function FloorPlan({children}) {
     useEffect(() => {
         // setting up constants
         
+        transformLayer.current = document.getElementById('layer1');
         const ownRect = ownElement.current.getBoundingClientRect();
-        const transformLayer = document.getElementById('layer1');
         const svg = document.getElementById('floorPlanSvg');
-
-        // setting initial pan
-
-        updatePan(transformLayer, mapState.pan);
+        const layerRect = transformLayer.current.getBoundingClientRect();
 
         // setting svg size
         ownElement.current.children[0].setAttribute("width", ownRect.width);
         ownElement.current.children[0].setAttribute("height", ownRect.height);
+
+        // setting initial pan
+
+        if(mapState.pan.x === 0 && mapState.pan.y === 0) {
+            mapState.pan = {
+                x: (ownRect.width / 2 - layerRect.width / 2) / 3,
+                y: (ownRect.height / 2 - layerRect.height / 2) / 3
+            };
+        }
+
+        updatePan(transformLayer.current, mapState);
 
         // making the desks and rooms clickable
 
@@ -52,9 +68,9 @@ function FloorPlan({children}) {
 
         mc.add(new Hammer.Pan());
         mc.on('pan', (e) => {
-            pan.x = mapState.pan.x + e.deltaX / mapState.zoom;
-            pan.y = mapState.pan.y + e.deltaY / mapState.zoom;
-            updatePan(transformLayer, pan);
+            pan.x = mapState.pan.x + e.deltaX / 3;
+            pan.y = mapState.pan.y + e.deltaY / 3;
+            updatePan(transformLayer.current, {pan, zoom: mapState.zoom});
             if (e.srcEvent.type === 'pointerup') {
                 mapState.pan= pan;
                 pan = {x:0, y:0};

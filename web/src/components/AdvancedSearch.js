@@ -15,7 +15,7 @@ function AdvancedSearch() {
         newSearch({
             text,
             type: type,
-            minimumSeats: seats > 0 ? seats : null,
+            minimumSeats: seats,
             onLevel: 1,
             minimumRating: 0,
             isFree: isFree ? isFree : null

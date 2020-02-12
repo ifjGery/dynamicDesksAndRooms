@@ -46,7 +46,7 @@ function Reserve({onChangeDisplay,selected}) {
     const [ fromTime, setFromTime ] = useState();
     const [ toDate, setToDate ] = useState();
     const [ toTime, setToTime ] = useState();
-    const { createReserved } = useReservations();
+    const { createReserved, nameReservations } = useReservations();
     const { user } = useUser();
     const reserve = () => {
         let currentTimestamp = new Date().getTime();
@@ -68,6 +68,11 @@ function Reserve({onChangeDisplay,selected}) {
         let current = date.toJSON().split('T');
         current[1] = current[1].split(':').slice(0,2).join(':');
         return current;
+    }
+
+    const toDisplay = timestamp => {
+        let disp = convert(new Date(timestamp));
+        return `${disp[0]} ${disp[1]}`
     }
 
     useEffect(() => {
@@ -99,6 +104,18 @@ function Reserve({onChangeDisplay,selected}) {
             <div className="actionButtons">
                 <button onClick={() => onChangeDisplay(null)}>back</button>
                 <button onClick={reserve}>reserve</button>
+            </div>
+            <div className="currentReservations">
+                <b>Reservations:</b><br />
+                <ul>
+                    {nameReservations(selected).map(one => (
+                        <li>
+                            <span><b>from:</b>{toDisplay(one.from)}</span><br />
+                            <span><b>to:</b>{toDisplay(one.to)}</span><br />
+                            <span><b>by:</b>{one.contact}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

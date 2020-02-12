@@ -19,19 +19,10 @@ let ct = new Date();
 
 const preloadedState = {
     navigation: {
-        activeWindow: null
+        activeWindow: 'LOGIN'
     },
     reservable: reservables.reservable,
     reserved: [
-        {
-            id: 'rect824',
-            floor: 1,
-            timestamp: 10000000,
-            from: ct.getTime(),
-            to: ct.getTime() + 1000 * 10,
-            contact: 'bbbb',
-            state: 'scheduled'
-        }
     ],
     map: {
         zoom: 1,
@@ -43,13 +34,6 @@ const preloadedState = {
     },
     notifications: [],
     notificationSettings: [
-        {
-            onId: "rect824",
-            onFloor: 1,
-            onFreed: true,
-            onReserved: true,
-            isImportant: true
-        }
     ],
     user: {
         nick:'aaa',

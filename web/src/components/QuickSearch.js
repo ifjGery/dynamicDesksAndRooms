@@ -11,7 +11,7 @@ function QuickSearch({onClick}) {
         newSearch({
             text: searchText,
             type: null,
-            freeSeats: null,
+            minimumSeats: 0,
             onLevel: 1,
             minimumRating: 0,
             isFree: null

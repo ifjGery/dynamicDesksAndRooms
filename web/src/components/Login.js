@@ -16,8 +16,8 @@ function Login() {
     return (
         <div className="login withHooks">
             <form onSubmit={submitHandler}>
-                Nick: <input type="text" name="nick" value={nick} onChange={(e) => setNick(e.target.value)} /><br />
-                Contact: <input type="text" name="contact" value={contact} onChange={(e) => setContact(e.target.value)} /><br />
+                <span>Nick:</span><input type="text" name="nick" value={nick} onChange={(e) => setNick(e.target.value)} /><br />
+                <span>Contact:</span><input type="text" name="contact" value={contact} onChange={(e) => setContact(e.target.value)} /><br />
                 <button onClick={submitHandler}>Login</button>
             </form>
         </div>

@@ -38,9 +38,9 @@ function SearchList() {
         <div className="searchList">
             <NavigationButton direction={BACKWARD}><span className="fontello icon-left-big"></span></NavigationButton><br />
             <ThemedList name="Id" onClick={navigateToReservation} list={results.inId} />
-            <ThemedList name="Name" onClick={navigateToReservation} list={results.inId} />
-            <ThemedList name="Description" onClick={navigateToReservation} list={results.inId} />
-            <ThemedList name="Equipment" onClick={navigateToReservation} list={results.inId} />
+            <ThemedList name="Name" onClick={navigateToReservation} list={results.inName} />
+            <ThemedList name="Description" onClick={navigateToReservation} list={results.inDescription} />
+            <ThemedList name="Equipment" onClick={navigateToReservation} list={results.inEquipment} />
         </div>
     )
 }
