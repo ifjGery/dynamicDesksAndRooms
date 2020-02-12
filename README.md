@@ -3,7 +3,9 @@ a simple react app where you can reserve desks and rooms and leave feedback
 
 ## limitations
 
-this page is designed for mobile only, and the following features are not implemented
+this page is designed for mobile only, so when viewing on desktop, please switch to responsive design mode in the dev tools
+
+plus the following features are not implemented
 * changing floors
 * zoom function
 
