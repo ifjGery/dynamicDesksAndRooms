@@ -84,6 +84,7 @@ function App() {
 
   return (
     <div className="App">
+      {windowContent}
       <div className="fixed">
         <Header />
         <div className="content">
@@ -91,7 +92,6 @@ function App() {
         </div>
       </div>
       <PopUpNotification text="your room is ready" />
-      {windowContent}
     </div>
   )
 }

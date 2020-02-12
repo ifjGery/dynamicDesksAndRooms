@@ -12,8 +12,6 @@ function PopUpNotification() {
     const [ visible, setVisible ] = useState(false);
 
     useEffect(() => {
-        console.log('a1');
-        console.log(importantNotifications);
         setActiveNotification(importantNotifications.length ? importantNotifications.length - 1 : 0);
         setVisible(importantNotifications.length);
     }, [importantNotifications.length]);
@@ -35,10 +33,16 @@ function PopUpNotification() {
 
     return visible && importantNotifications.length ? (
         <div className="popUpNotification">
-            <button onClick={next}>Up</button>
-            <button onClick={prev}>Down</button>
-            <button onClick={rateAction}>{importantNotifications[activeNotification].text}</button>
-            <button onClick={() => setVisible(false)}>Close</button>
+            <div className="navigation">
+                <button onClick={next}><span className="fontello icon-up-open"></span></button>
+                <button onClick={prev}><span className="fontello icon-down-open"></span></button>
+            </div>
+            <div className="messageContainer">
+                <button className="message" onClick={rateAction}>{importantNotifications[activeNotification].text}</button>
+            </div>
+            <div className="closeButton">
+                <button onClick={() => setVisible(false)}><span className="fontello icon-cancel-circled"></span></button>
+            </div>
         </div>
     ) : '';
 }

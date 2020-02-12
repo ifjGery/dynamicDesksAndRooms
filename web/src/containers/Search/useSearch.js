@@ -21,6 +21,7 @@ function useSearch() {
         }
 
         const filtered = Object.entries(allReservable).map(entry => entry[1]).filter(one => {
+            console.log(search);
             let currentTime = new Date().getTime();
             let good = true;
             if(search.type) good = good && (search.type === one.type);

@@ -5,7 +5,6 @@ const initialState = {};
 export default function(state = initialState, action) {
     switch(action.type) {
         case CREATE_FEEDBACK: {
-            debugger;
             const { id, ...feedback } = action.payload;
             return {
                 ...state,

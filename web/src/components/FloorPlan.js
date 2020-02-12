@@ -14,9 +14,6 @@ function FloorPlan({children}) {
     const selectables = document.getElementsByClassName('room_or_desk');
 
     useEffect(() => {
-        console.log('bb1');
-        console.log(selectables);
-        console.log(mapState.reserved);
         for (let one of selectables) {
             if (('id_' + one.id) in mapState.reserved) {
                 one.dataset.reserved = mapState.reserved['id_' + one.id];

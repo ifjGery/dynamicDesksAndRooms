@@ -24,8 +24,8 @@ function QuickSearch({onClick}) {
                 nextPage={SEARCH_LIST} 
                 direction={FORWARD} 
                 isRootNavigation 
-                onClick={() => { createNewSearch(); onClick();}}>Search</NavigationButton>
-            <NavigationButton nextPage={ADVANCED_SEARCH} direction={FORWARD} isRootNavigation onClick={onClick}>Adv</NavigationButton>
+                onClick={() => { createNewSearch(); onClick();}}><span className="fontello icon-search"></span></NavigationButton>
+            <NavigationButton nextPage={ADVANCED_SEARCH} direction={FORWARD} isRootNavigation onClick={onClick}><span className="fontello icon-sliders"></span></NavigationButton>
         </div>
     );
 }

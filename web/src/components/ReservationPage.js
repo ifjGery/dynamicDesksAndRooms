@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { WATCH_DISPLAY, RESERVE_DISPLAY, BACKWARD } from './constants';
 import NavigationButton from './NavigationButton';
@@ -10,14 +10,15 @@ import useUser from '../containers/User/useUser';
 function FeedbackList({feedbacks}) {
     const feedbackList = feedbacks.map((feedback, index) => (
             <li key={"feedback_" + index}>
-                star: {feedback.star}<br />
-                feedback: {feedback.feedback}<br />
-                {feedback.reply ? <>reply: {feedback.reply}<br /></> : ""}
+                <b>star:</b> {feedback.star}<br />
+                <b>feedback:</b>
+                <div className="info">{feedback.feedback}</div>
+                {feedback.reply ? <><b>reply:</b><div className="info">{feedback.reply}</div></> : ""}
             </li>
         )
     );  
     return (
-        <ul>
+        <ul className="feedbacks">
             {feedbackList}
         </ul>
     )
@@ -26,11 +27,16 @@ function FeedbackList({feedbacks}) {
 function Details({onChangeDisplay, reservation}) {
     return (
         <>
-            description: {reservation.description}<br /> 
-            equipment: {reservation.equipment.map((item) => item + " ")}
+            <b>description:</b>
+                <div class="info">{reservation.description}</div>
+            <b>equipment:</b> 
+            <div class="info">{reservation.equipment.map((item) => item + " ")}</div>
+            <div className="actionButtons">
+                <button onClick={() => onChangeDisplay(WATCH_DISPLAY)}>Watch</button>
+                <button onClick={() => onChangeDisplay(RESERVE_DISPLAY)}>Reserve</button>
+            </div>
+            <b>Feedbacks:</b>
             <FeedbackList feedbacks={reservation.feedbacks} />
-            <button onClick={() => onChangeDisplay(WATCH_DISPLAY)}>Watch</button>
-            <button onClick={() => onChangeDisplay(RESERVE_DISPLAY)}>Reserve</button>
         </>
     );
 }
@@ -54,21 +60,47 @@ function Reserve({onChangeDisplay,selected}) {
             to: toTimestamp,
             contact: user.contact
         };
-        console.log(reservation);
         createReserved(reservation);
         onChangeDisplay(null);
     }
+
+    const convert = date => {
+        let current = date.toJSON().split('T');
+        current[1] = current[1].split(':').slice(0,2).join(':');
+        return current;
+    }
+
+    useEffect(() => {
+        let date = new Date();
+        date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+        const current = convert(date);
+        date.setHours(date.getHours() + 1);
+        const future = convert(date);
+
+        setFromDate(current[0]);
+        setFromTime(current[1]);
+        
+        setToDate(future[0]);
+        setToTime(future[1]);
+    }, []);
+
     return (
-        <>
-        from: 
-        <input type="date" onChange={e => setFromDate(e.target.value)}></input>
-        <input type="time" onChange={e => setFromTime(e.target.value)}></input><br />
-        till: 
-        <input type="date" onChange={e => setToDate(e.target.value)}></input>
-        <input type="time" onChange={e => setToTime(e.target.value)}></input><br />
-        <button onClick={() => onChangeDisplay(null)}>back</button>
-        <button onClick={reserve}>reserve</button>
-        </>
+        <div className="reservation">
+            <div>
+                <b>from:</b> 
+                <input type="date" value={fromDate} onChange={e => setFromDate(e.target.value)}></input>
+                <input type="time" value={fromTime} onChange={e => setFromTime(e.target.value)}></input><br />
+            </div>
+            <div>
+            <b>till:</b> 
+                <input type="date" value={toDate} onChange={e => setToDate(e.target.value)}></input>
+                <input type="time" value={toTime} onChange={e => setToTime(e.target.value)}></input><br />
+            </div>
+            <div className="actionButtons">
+                <button onClick={() => onChangeDisplay(null)}>back</button>
+                <button onClick={reserve}>reserve</button>
+            </div>
+        </div>
     )
 }
 
@@ -87,18 +119,22 @@ function Watch({onChangeDisplay, selected}) {
             isImportant: important,
             timestamp: new Date().getTime()
         };
-        console.log(notification);
         createNotification(notification);
         onChangeDisplay(null);
     };
 
     return (
         <>
-        important <input type="checkbox" onChange={e => setImportant(e.target.checked)}></input><br />
-        reservation <input type="checkbox" onChange={e => setReservation(e.target.checked)}></input><br />
-        freeing <input type="checkbox" onChange={e => setFreeing(e.target.checked)}></input><br />
-        <button onClick={() => onChangeDisplay(null)}>back</button>
-        <button onClick={watch}>watch</button>
+        <b>Watch settings</b>
+        <div className="settings">
+            <div><span>important</span> <input type="checkbox" onChange={e => setImportant(e.target.checked)}></input></div>
+            <div><span>reservation</span> <input type="checkbox" onChange={e => setReservation(e.target.checked)}></input></div>
+            <div><span>freeing</span> <input type="checkbox" onChange={e => setFreeing(e.target.checked)}></input></div>
+        </div>
+        <div className="actionButtons">
+            <button onClick={() => onChangeDisplay(null)}>back</button><br />
+            <button onClick={watch}>watch</button>
+        </div>
         </>
     )
 }
@@ -121,16 +157,15 @@ function ReservationPage() {
             display = <Details reservation={reservation} onChangeDisplay={setActiveDisplay} />;
     }
 
-    console.log(reservation);
-    let name = reservation.name ? <>name: {reservation.name}<br /></> : "";
+    let name = reservation.name ? <><b>name:</b> {reservation.name}<br /></> : "";
 
     return (
         <div className="reservationPage">
-            <NavigationButton direction={BACKWARD}>Back</NavigationButton><br />
-            id: {reservation.id}<br />
-            {name}
-            type: {reservation.type}<br />
-            {display}
+            <NavigationButton direction={BACKWARD}><span className="fontello icon-left-big"></span></NavigationButton><br />
+            <div><b>id:</b> {reservation.id}<br /></div>
+            <div>{name}</div>
+            <div><b>type:</b> {reservation.type}<br /></div>
+            <div>{display}</div>
         </div>
     )
 }

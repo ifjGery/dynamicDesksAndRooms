@@ -12,7 +12,6 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case SAVE_MAP_STATE: {
-            console.log(action);
             return {
                 ...state,
                 pan: action.payload.mapState.pan,

@@ -13,7 +13,7 @@ function Details({reservation, selected, index, onDelete}) {
         <>
             reserved from: {toDate(reservation.from)}<br />
             reserved to: {toDate(reservation.to)}<br />
-            <button onClick={() => onDelete(reservation)}>cancel</button>
+            <button onClick={() => onDelete(reservation)}>cancel reservation</button>
         </>
     );
     return index === selected ? details : "";
@@ -23,7 +23,7 @@ function Reservation({reservation, selected, onSelected, index, onDelete}) {
     return (
         <>
             <li key={"res_" + reservation.id}>
-                <button onClick={() => onSelected(index)}>{reservation.type} {reservation.id}</button><br />
+                <button className="reservation" onClick={() => onSelected(index)}>{reservation.type} {reservation.id}</button><br />
                 <Details reservation={reservation} selected={selected} index={index} onDelete={onDelete} />
             </li>
         </>
@@ -38,7 +38,7 @@ function OwnReservations() {
 
     return (
         <div className="ownReservations">
-            <NavigationButton direction={BACKWARD}>Back</NavigationButton>
+            <NavigationButton direction={BACKWARD}><span className="fontello icon-left-big"></span></NavigationButton>
             <ul>
                 {reservations.map((reservation, index) => <Reservation reservation={reservation} index={index} selected={selectedReservation} onSelected={setSelectedReservation} onDelete={deleteReserved} />)}
             </ul>

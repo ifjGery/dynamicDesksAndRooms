@@ -76,18 +76,28 @@ setInterval(() => {
         if (one.state === 'scheduled' && currentTime > one.from && currentTime < one.to) {
             store.dispatch(updateReserved({selected: index,state:'reserved'}))
             store.dispatch(updateReservableState(one.id, true));
-            console.log('onReserved');
 
             state.notificationSettings.forEach(setting => {
-                if(setting.onId == one.id && setting.onReserved) {
-                    store.dispatch(createNotification({
-                        id: reservable.id,
-                        timestamp: currentTime,
-                        text: `Someones reservation started for ${reservable.id}`,
-                        seen: false,
-                        rateable: false,
-                        isImportant: setting.isImportant
-                    }));
+                if(setting.onId === one.id && setting.onReserved) {
+                    if(one.contact === state.user.contact) {
+                        store.dispatch(createNotification({
+                            id: reservable.id,
+                            timestamp: currentTime,
+                            text: `Your reservation started for ${reservable.id}`,
+                            seen: false,
+                            rateable: false,
+                            isImportant: setting.isImportant
+                        }));
+                    } else {
+                        store.dispatch(createNotification({
+                            id: reservable.id,
+                            timestamp: currentTime,
+                            text: `Someones reservation started for ${reservable.id}`,
+                            seen: false,
+                            rateable: false,
+                            isImportant: setting.isImportant
+                        }));
+                    }
                 }
             });
         }
@@ -98,14 +108,14 @@ setInterval(() => {
                 store.dispatch(createNotification({
                     id: reservable.id,
                     timestamp: currentTime,
-                    text: `How was your reservation for ${reservable.id} ? Please rate it`,
+                    text: `How was your reservation for ${reservable.id}? Please rate it`,
                     seen: false,
                     rateable: true,
                     isImportant: true
                 }));
             } else {
                 state.notificationSettings.forEach(setting => {
-                    if(setting.onId == one.id && setting.onFreed) {
+                    if(setting.onId === one.id && setting.onFreed) {
                         store.dispatch(createNotification({
                             id: reservable.id,
                             timestamp: currentTime,

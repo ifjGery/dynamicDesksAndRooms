@@ -17,7 +17,7 @@ function NavigationButton({children, direction, nextPage, isRootNavigation, onCl
     }
     return (
         <>
-            <button onClick={navigate}>{children}</button>
+            <button className="navButton" onClick={navigate}>{children}</button>
         </>
     );
 }

@@ -5,7 +5,7 @@ import useFeedback from '../containers/Feedback/useFeedback';
 function Feedback() {
     const { changeWindow } = useNavigation();
     const { createFeedback, feedbackId } = useFeedback();
-    const [ stars, setStarts ] = useState(5);
+    const [ stars, setStars ] = useState(5);
     const [ feedback, setfeedback ] = useState('');
     const rate = () => {
         const currentTime = new Date().getTime();
@@ -18,12 +18,20 @@ function Feedback() {
         });
         changeWindow(null);
     }
+
     return (
-        <>
-            <input type="range" min="1" max="5" step="1" value={stars} onChange={(e) => setStarts(e.target.value)} /><br />
-            feedback: <input type="text" value={feedback} onChange={(e) => setfeedback(e.target.value)} /><br />
+        <div className="feedbackContent">
+            <div>
+                <button onClick={() => setStars(1)}><span className={stars >= 1 ? "icon-star" : "icon-star-empty"}></span></button>
+                <button onClick={() => setStars(2)}><span className={stars >= 2 ? "icon-star" : "icon-star-empty"}></span></button>
+                <button onClick={() => setStars(3)}><span className={stars >= 3 ? "icon-star" : "icon-star-empty"}></span></button>
+                <button onClick={() => setStars(4)}><span className={stars >= 4 ? "icon-star" : "icon-star-empty"}></span></button>
+                <button onClick={() => setStars(5)}><span className={stars >= 5 ? "icon-star" : "icon-star-empty"}></span></button>
+            </div><br />
+            <b>feedback:</b><br />
+            <input type="text" value={feedback} onChange={(e) => setfeedback(e.target.value)} /><br />
             <button onClick={rate}>rate</button>
-        </>
+        </div>
     )
 }
 
